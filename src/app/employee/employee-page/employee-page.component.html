@@ -1,0 +1,11 @@
+<div class="cotainter emplolyee-page">
+    <div class="row d-flex employee-list">
+        <div>workforce</div>
+        <button class="ml-4 emp-tab" [disabled]="isDisabled">Employees</button>
+        <button class="ml-4 emp-tab" [disabled]="!isDisabled">Add Employee</button>
+    </div>
+    <div class="row d-flex justify-content-center align-item-center">
+        <app-employees-list></app-employees-list>
+
+    </div>
+</div>

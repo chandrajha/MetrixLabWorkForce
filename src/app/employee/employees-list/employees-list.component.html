@@ -1,0 +1,18 @@
+<div class="row employee-list-page">
+    <div *ngFor="let emp of empLists.data" class="col-sm-4 employee-list-page-card d-flex justify-content-center align-item-center">
+        <div class="card" style="width: 10rem;">
+            <img class="card-img-top" [src]="emp.avatar" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text d-flex justify-content-center align-item-center">{{emp.first_name+" "+emp.last_name}}</p>
+            </div>
+          </div>
+    </div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="d-flex">         
+          <div *ngFor="let number of pageNumbers;index as i" class="ml-2">
+              <div (click)="getEmpLists(i+1)" class="pagination">{{i+1}}</div></div>
+          <div class="ml-2"> ... </div>          
+        </ul>
+      </nav>
+</div>
