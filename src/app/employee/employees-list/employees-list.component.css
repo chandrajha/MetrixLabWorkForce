@@ -1,11 +1,11 @@
 .employee-list-page{
     margin: 0px;
-    height: calc(83vh - 65px);
+    height: calc(83vh - 88px);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow-y: auto;
-    padding: 10px 0px 0px 10px;
+    padding: 0px 0px 0px 10px;
     
 }
 .employee-list-page-card{

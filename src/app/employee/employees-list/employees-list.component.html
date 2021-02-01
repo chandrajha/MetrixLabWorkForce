@@ -1,18 +1,62 @@
-<div class="row employee-list-page">
-    <div *ngFor="let emp of empLists.data" class="col-sm-4 employee-list-page-card d-flex justify-content-center align-item-center">
-        <div class="card" style="width: 10rem;">
-            <img class="card-img-top" [src]="emp.avatar" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text d-flex justify-content-center align-item-center">{{emp.first_name+" "+emp.last_name}}</p>
+    <div *ngIf="empList; else empDetails">
+        <div class="row" style="margin: 0px;">
+            <div class="col-sm-9"></div>
+            <div class="col-sm-3 mt-2">
+                <div style="
+                color: #0000ffb5;
+                font-weight: 600;padding-left: 20px;
+            ">Total of <span style="
+        color: #d0970d;
+    ">{{totalEmployee}}</span> Employees</div>
             </div>
-          </div>
+        </div>
+        <div class="row employee-list-page">
+            
+            <div *ngFor="let emp of empLists;index as i" class="col-sm-4 employee-list-page-card d-flex justify-content-center align-item-center">
+                <div class="card" style="width: 10rem;" (click)="empList=false; showEmpDetails(emp.id)">
+                    <img class="card-img-top" [src]="emp.avatar" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="card-text d-flex justify-content-center align-item-center">{{emp.first_name+" "+emp.last_name}}</p>
+                    </div>
+                  </div>
+            </div>
+        
+            <nav aria-label="Page navigation example">
+                <ul class="d-flex">         
+                  <div *ngFor="let number of pageNumbers;index as i" class="ml-2">
+                      <div (click)="getEmpLists(i+1)" class="pagination">{{i+1}}</div></div>
+                  <div class="ml-2"> ... </div>          
+                </ul>
+              </nav>
+        </div>
     </div>
+  
 
-    <nav aria-label="Page navigation example">
-        <ul class="d-flex">         
-          <div *ngFor="let number of pageNumbers;index as i" class="ml-2">
-              <div (click)="getEmpLists(i+1)" class="pagination">{{i+1}}</div></div>
-          <div class="ml-2"> ... </div>          
-        </ul>
-      </nav>
-</div>
+
+<ng-template #empDetails>
+    <div style="padding-top: 4rem;">
+        <div class="d-flex">
+            <div class="card" style="width: 20rem;">
+                <img class="card-img-top" [src]="empDetail.avatar" alt="Card image cap">
+                </div>
+                <div class="card" style="width: 20rem;justify-content: center;padding: 2rem;">
+                    <div>Employee ID:{{empDetail.id}}</div>
+                    <div class="mt-3">First Name :{{empDetail.first_name}}</div>
+                    <div class="mt-3">Last Name  :{{empDetail.last_name}}</div>
+                    <div class="mt-3">Email Address:{{empDetail.email}}</div>            
+                </div>
+        </div>        
+      </div>
+      <div class="mt-4">
+        <button (click)="empList=true" type="button" class="btn btn-primary">Update</button>
+        <button (click)="empList=true" type="button" class="btn btn-warning ml-4">Remove</button>
+      </div>
+      <div class="mt-4" style="
+      display: flex;
+      justify-content: center;
+  ">
+        <button (click)="empList=true" type="button" class="btn btn-secondary">Back</button>
+      </div>
+    
+</ng-template>
+
